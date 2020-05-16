@@ -1,0 +1,83 @@
+<form name="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <h1 mat-dialog-title class="mt-2">{{ this.dialogTitle }}</h1>
+  <div mat-dialog-content>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Nama</mat-label>
+      <input matInput formControlName="nama" placeholder="Nama">
+      <mat-error *ngIf="form.get('nama').hasError('required')">
+        Nama wajib diisi
+      </mat-error>
+    </mat-form-field>
+    <div class="row w-100 m-0 p-0">
+      <div class="col-6 w-100 m-0 p-0">
+        <mat-form-field class="w-100 pr-2" appearance="outline">
+          <mat-label>C1 (Harga)</mat-label>
+          <input matInput formControlName="c1" placeholder="C1 (Harga)" type="number">
+          <mat-error *ngIf="form.get('c1').hasError('required')">
+            C1 (Harga) wajib diisi
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6 w-100 m-0 p-0">
+        <mat-form-field class="w-100 pl-2" appearance="outline">
+          <mat-label>C2 (Fasilitas)</mat-label>
+          <input matInput formControlName="c2" placeholder="C2 (Fasilitas)" type="number">
+          <mat-error *ngIf="form.get('c2').hasError('required')">
+            C2 (Fasilitas) wajib diisi
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row m-0 p-0">
+      <div class="col-6 w-100 m-0 p-0">
+        <mat-form-field class="w-100 pr-2" appearance="outline">
+          <mat-label>C3 (Jarak dengan Pusat Kota)</mat-label>
+          <input matInput formControlName="c3" placeholder="C3 (Jarak dengan Pusat Kota)" type="number">
+          <mat-error *ngIf="form.get('c3').hasError('required')">
+              C3 (Jarak dengan Pusat Kota) wajib diisi
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6 w-100 m-0 p-0">
+        <mat-form-field class="w-100 pl-2" appearance="outline">
+          <mat-label>C4 (Bintang/Kelas)</mat-label>
+          <mat-select formControlName="c4">
+            <mat-option [value]=0>0</mat-option>
+            <mat-option [value]=1>1</mat-option>
+            <mat-option [value]=2>2</mat-option>
+            <mat-option [value]=3>3</mat-option>
+            <mat-option [value]=4>4</mat-option>
+            <mat-option [value]=5>5</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('c4').hasError('required')">
+            C4 (Bintang/Kelas) wajib diisi
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row m-0 p-0">
+      <div class="col-6 w-100 m-0 p-0">
+        <mat-form-field class="w-100 pr-2" appearance="outline">
+          <mat-label>C5 (Jumlah Ulasan)</mat-label>
+          <input matInput formControlName="c5" placeholder="C5 (Jumlah Ulasan)" type="number">
+          <mat-error *ngIf="form.get('c5').hasError('required')">
+            C5 (Jumlah Ulasan) wajib diisi
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6 w-100 m-0 p-0">
+        <mat-form-field class="w-100 pl-2" appearance="outline">
+          <mat-label>C6 (Rating)</mat-label>
+          <input matInput formControlName="c6" placeholder="C6 (Rating)" type="number">
+          <mat-error *ngIf="form.get('c6').hasError('required')">
+            C6 (Rating) wajib diisi
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="mb-1">
+    <button mat-raised-button class="mx-auto mt-1" type="button" (click)="closeDialog()">Batal</button>
+    <button mat-raised-button class="mx-auto mt-1" color="primary" type="submit" [disabled]="form.invalid">Simpan</button>
+  </div>
+</form>

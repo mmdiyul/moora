@@ -1,0 +1,36 @@
+<div class="bg-success text-white w-100 p-4 mt-4 shadow">
+  <h5 class="text-center">Hasil Ranking</h5>
+  <hr/>
+  <div class="backend-content">
+    <div class="backend-loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="backend-loading-shade" *ngIf="countDataSearch === 0">
+      <mat-icon class="text-danger">error_outline</mat-icon>
+      <span class="text-danger">&nbsp;Data tidak ditemukan</span>
+    </div>
+    <table mat-table [dataSource]="matriksRank" class="w-100 backend-table bg-success">
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef class="text-white"> No </th>
+        <td mat-cell *matCellDef="let element; let i = index" class="text-white"> {{ i + 1 }} </td>
+      </ng-container>
+      <ng-container matColumnDef="nama">
+        <th mat-header-cell *matHeaderCellDef class="text-white"> Nama Alternatif </th>
+        <td mat-cell class="cols" *matCellDef="let element" class="text-white"> {{element.nama}} </td>
+      </ng-container>
+      <ng-container matColumnDef="yi">
+        <th mat-header-cell *matHeaderCellDef class="text-white"> Yi </th>
+        <td mat-cell class="cols" *matCellDef="let element" class="text-white"> {{element.yi | number: '1.2-5'}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+<div class="bg-white w-100 p-4 mt-4 shadow">
+  <h5 class="text-center">Kesimpulan</h5>
+  <hr/>
+  <p>
+    Berdasarkan nilai bobot yang Anda berikan dan dari hasil perhitungan di atas, maka dapat disimpulkan bahwa hotel terbaik di kota Malang adalah <strong>{{ hotelTerbaik }}</strong> dengan nilai optimasi sebesar <strong>{{ nilaiTertinggi }}</strong>
+  </p>
+</div>

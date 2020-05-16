@@ -1,0 +1,23 @@
+<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-primary">
+  <div class="p-5 bg-white rounded shadow text-center" style="min-width: 500px;">
+    <h4>Masuk</h4>
+    <hr>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-2">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email" autocomplete="off">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="loginForm.get('email').hasError('required')">Email harus diisi</mat-error>
+        <mat-error *ngIf="loginForm.get('email').hasError('email')">Email tidak valid</mat-error>
+      </mat-form-field>
+      <button mat-raised-button type="submit" color="accent" class="w-100" [disabled]="loginForm.invalid">Masuk</button>
+    </form>
+    <hr>
+    <i>
+      Belum memiliki akun?
+      <strong>
+        <a routerLink="/daftar">Daftar</a>
+      </strong>
+    </i>
+  </div>
+</div>
