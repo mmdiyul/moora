@@ -4880,7 +4880,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
-    host: 'http://localhost',
+    host: 'http://34.204.68.41',
     port: 80
 };
 /*
