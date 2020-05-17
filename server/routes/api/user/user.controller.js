@@ -7,10 +7,6 @@ module.exports = {
   findAll: (req, res, next) => {
     let { where, limit, offset, sort } = query(req.query)
     const search = req.query.search
-
-    if(req.user && req.user.role.name=="admin"){
-      where['role'] = req.user.role._id
-    }
     
     if(search){
       where['$or'] = [{
@@ -39,9 +35,11 @@ module.exports = {
       .catch(error => next(error))
   },
   updateById: (req, res, next) => {
+    const data = req.body
+    data.password = req.user.password
     User.findOneAndUpdate(
       {_id: req.params.id},
-      {$set: req.body},
+      {$set: data},
       {new: true}
     )
       .then(user => res.json(user))

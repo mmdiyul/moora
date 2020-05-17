@@ -41,8 +41,8 @@ app.use(express.static(path.join(__dirname, staticFile )));
 // catch static route
 app.all('/*',(req, res, next)=>{
     // redirect non-API routes to Angular route
-    // res.sendFile('index.html', {root: staticFile })
-    res.send("It works!")
+    res.sendFile('index.html', {root: staticFile })
+    // res.send("It works!")
 })
 
 // error handler
